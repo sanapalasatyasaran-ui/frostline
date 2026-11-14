@@ -38,10 +38,15 @@ header {
   letter-spacing: 4px;
 }
 
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
 nav a {
   color: white;
   text-decoration: none;
-  margin-left: 20px;
   font-size: 14px;
 }
 
@@ -50,13 +55,13 @@ nav a:hover {
 }
 
 .hero {
-  min-height: 570px;
+  min-height: 590px;
   padding: 100px 9%;
   display: flex;
   align-items: center;
   color: white;
   background:
-    linear-gradient(90deg, rgba(10,20,14,.9), rgba(10,20,14,.25)),
+    linear-gradient(90deg, rgba(10,20,14,.88), rgba(10,20,14,.25)),
     url("https://commons.wikimedia.org/wiki/Special:FilePath/An_endangered_red_wolf_canis_rufus.jpg");
   background-size: cover;
   background-position: center;
@@ -66,8 +71,8 @@ nav a:hover {
   max-width: 650px;
 }
 
-.tag {
-  color: #efb46d;
+.tag, .section-tag {
+  color: #d58a4c;
   letter-spacing: 4px;
   font-size: 13px;
   font-weight: bold;
@@ -104,13 +109,6 @@ section {
   padding: 75px 9%;
 }
 
-.section-tag {
-  color: #b76b32;
-  letter-spacing: 3px;
-  font-size: 12px;
-  font-weight: bold;
-}
-
 h2 {
   font-size: 38px;
   line-height: 1.2;
@@ -131,12 +129,13 @@ h2 {
 
 .about-image {
   width: 100%;
-  height: 340px;
+  height: 350px;
   object-fit: cover;
+  object-position: center;
   border-radius: 8px;
 }
 
-.facts {
+.facts, .conservation {
   background: #e9e6dc;
 }
 
@@ -186,12 +185,12 @@ h2 {
   margin: 12px 0;
 }
 
-.timeline {
+.timeline, .quiz {
   background: #1c3025;
   color: white;
 }
 
-.timeline .intro {
+.timeline .intro, .quiz p {
   color: #d4ddd5;
 }
 
@@ -205,10 +204,6 @@ h2 {
   color: #efb46d;
 }
 
-.conservation {
-  background: #e9e6dc;
-}
-
 .conservation-box {
   background: #fffdf7;
   padding: 35px;
@@ -216,14 +211,12 @@ h2 {
   margin-top: 25px;
 }
 
-.quiz {
-  background: #1c3025;
-  color: white;
-  text-align: center;
+.conservation-box p {
+  margin: 8px 0;
 }
 
-.quiz p {
-  color: #d4ddd5;
+.quiz {
+  text-align: center;
 }
 
 .quiz-box {
@@ -259,7 +252,6 @@ h2 {
 
 .donate {
   text-align: center;
-  background: #f5f2e9;
 }
 
 .donate-box {
@@ -283,21 +275,29 @@ footer a {
 }
 
 @media (max-width: 800px) {
-  .about-grid,
-  .fact-grid,
-  .threat-grid {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fact-grid {
     grid-template-columns: 1fr 1fr;
   }
 
-  nav a {
-    margin-left: 8px;
+  .threat-grid {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (max-width: 550px) {
-  .about-grid,
-  .fact-grid,
-  .threat-grid {
+  header {
+    padding: 18px 6%;
+  }
+
+  nav {
+    gap: 12px;
+  }
+
+  .fact-grid, .threat-grid {
     grid-template-columns: 1fr;
   }
 
@@ -358,9 +358,11 @@ footer a {
       </p>
     </div>
 
-    <img class="about-image"
+    <img
+      class="about-image"
       src="https://commons.wikimedia.org/wiki/Special:FilePath/An_endangered_red_wolf_canis_rufus.jpg"
-      alt="Red wolf">
+      alt="An endangered red wolf"
+      loading="lazy">
   </div>
 </section>
 
@@ -496,7 +498,7 @@ footer a {
   <div class="quiz-box">
     <h3 id="question">Where is the red wolf native to?</h3>
     <div id="answers"></div>
-    <p id="quiz-result"></p>
+    <p id="quiz-result" aria-live="polite"></p>
     <p id="quiz-score"></p>
   </div>
 </section>
@@ -509,11 +511,14 @@ footer a {
       Conservation organizations work to protect red wolves
       and their habitats. Learn how you can support their work.
     </p>
+
     <a class="btn"
        href="https://redwolves.com/newsite/make-a-donation/"
-       target="_blank" rel="noopener">
+       target="_blank"
+       rel="noopener noreferrer">
        SUPPORT RED WOLF CONSERVATION
     </a>
+
     <p style="margin-top:18px;font-size:12px;">
       This link takes you to an independent conservation organization.
     </p>
@@ -528,7 +533,8 @@ footer a {
   <p>
     Research:
     <a href="https://www.fws.gov/species/red-wolf-canis-rufus"
-       target="_blank" rel="noopener">
+       target="_blank"
+       rel="noopener noreferrer">
        U.S. Fish & Wildlife Service
     </a>
   </p>
@@ -569,6 +575,7 @@ let score = 0;
 
 function showQuestion() {
   const q = questions[current];
+
   document.getElementById("question").textContent =
     "Question " + (current + 1) + ": " + q.q;
 
@@ -595,7 +602,9 @@ function showQuestion() {
 
       const next = document.createElement("button");
       next.textContent =
-        current === questions.length - 1 ? "See Final Score" : "Next Question";
+        current === questions.length - 1
+          ? "See Final Score"
+          : "Next Question";
 
       next.onclick = () => {
         current++;
@@ -605,9 +614,12 @@ function showQuestion() {
         } else {
           document.getElementById("question").textContent =
             "Challenge Complete!";
+
           document.getElementById("answers").innerHTML = "";
+
           document.getElementById("quiz-result").textContent =
             "You scored " + score + " out of " + questions.length + "!";
+
           document.getElementById("quiz-score").textContent =
             "Thanks for learning about the red wolf!";
         }
