@@ -1,0 +1,630 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FROSTLINE | Save the Red Wolf</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f2e9;
+  color: #202a22;
+  line-height: 1.7;
+}
+
+header {
+  background: #17251d;
+  color: white;
+  padding: 18px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: bold;
+  letter-spacing: 4px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: #e6a45b;
+}
+
+.hero {
+  min-height: 570px;
+  padding: 100px 9%;
+  display: flex;
+  align-items: center;
+  color: white;
+  background:
+    linear-gradient(90deg, rgba(10,20,14,.9), rgba(10,20,14,.25)),
+    url("https://upload.wikimedia.org/wikipedia/commons/5/5e/Red_Wolf_%28Canis_rufus%29.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-content {
+  max-width: 650px;
+}
+
+.tag {
+  color: #efb46d;
+  letter-spacing: 4px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.hero h1 {
+  font-size: clamp(42px, 7vw, 76px);
+  line-height: 1.05;
+  margin: 20px 0;
+}
+
+.hero p {
+  font-size: 18px;
+  max-width: 540px;
+  color: #eee;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 13px 25px;
+  background: #c87938;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background: #a65d28;
+}
+
+section {
+  padding: 75px 9%;
+}
+
+.section-tag {
+  color: #b76b32;
+  letter-spacing: 3px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 38px;
+  line-height: 1.2;
+  margin: 12px 0 20px;
+}
+
+.intro {
+  max-width: 750px;
+  color: #5b625c;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.about-image {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.facts {
+  background: #e9e6dc;
+}
+
+.fact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-top: 35px;
+}
+
+.fact {
+  background: #fffdf7;
+  padding: 25px;
+  border-radius: 7px;
+  border-bottom: 4px solid #bd753c;
+}
+
+.fact h3 {
+  font-size: 19px;
+  margin-bottom: 10px;
+}
+
+.fact p {
+  color: #60675f;
+  font-size: 14px;
+}
+
+.threat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 35px;
+}
+
+.threat {
+  padding: 25px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 20px #0000000c;
+}
+
+.threat span {
+  font-size: 30px;
+}
+
+.threat h3 {
+  margin: 12px 0;
+}
+
+.timeline {
+  background: #1c3025;
+  color: white;
+}
+
+.timeline .intro {
+  color: #d4ddd5;
+}
+
+.timeline-item {
+  border-left: 2px solid #d48b4c;
+  padding: 5px 0 25px 25px;
+  margin-top: 20px;
+}
+
+.timeline-item h3 {
+  color: #efb46d;
+}
+
+.conservation {
+  background: #e9e6dc;
+}
+
+.conservation-box {
+  background: #fffdf7;
+  padding: 35px;
+  border-radius: 8px;
+  margin-top: 25px;
+}
+
+.quiz {
+  background: #1c3025;
+  color: white;
+  text-align: center;
+}
+
+.quiz p {
+  color: #d4ddd5;
+}
+
+.quiz-box {
+  max-width: 650px;
+  margin: 30px auto 0;
+  padding: 30px;
+  background: #293e32;
+  border-radius: 10px;
+}
+
+.quiz button {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 13px;
+  border: 1px solid #d4a06d;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.quiz button:hover {
+  background: #c87938;
+}
+
+#quiz-result {
+  margin-top: 20px;
+  color: #efb46d;
+  font-weight: bold;
+}
+
+.donate {
+  text-align: center;
+  background: #f5f2e9;
+}
+
+.donate-box {
+  max-width: 750px;
+  margin: auto;
+  padding: 45px 25px;
+  background: #e9e6dc;
+  border-radius: 10px;
+}
+
+footer {
+  background: #17251d;
+  color: #cbd4cc;
+  text-align: center;
+  padding: 30px 15px;
+  font-size: 13px;
+}
+
+footer a {
+  color: #efb46d;
+}
+
+@media (max-width: 800px) {
+  .about-grid,
+  .fact-grid,
+  .threat-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  nav a {
+    margin-left: 8px;
+  }
+}
+
+@media (max-width: 550px) {
+  .about-grid,
+  .fact-grid,
+  .threat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  section {
+    padding: 55px 7%;
+  }
+
+  .hero {
+    padding: 75px 7%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">FROSTLINE.</div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#facts">Facts</a>
+    <a href="#threats">Threats</a>
+    <a href="#conservation">Conservation</a>
+    <a href="#donate">Donate</a>
+  </nav>
+</header>
+
+<main>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="tag">WILDLIFE • UNITED STATES</div>
+    <h1>THE RED WOLF.<br>A FUTURE AT RISK.</h1>
+    <p>
+      A rare predator native to the United States.
+      Discover its story and why protecting its future matters.
+    </p>
+    <a class="btn" href="#about">EXPLORE THE STORY</a>
+  </div>
+</div>
+
+<section id="about">
+  <div class="about-grid">
+    <div>
+      <div class="section-tag">01 / THE SPECIES</div>
+      <h2>Meet the American Red Wolf</h2>
+      <p>
+        The red wolf (Canis rufus) is one of the world's rarest
+        wild canids. It is native to the southeastern United States
+        and is recognized by its reddish fur, long legs, and
+        slender body.
+      </p>
+      <br>
+      <p>
+        Red wolves play an important role in nature. As predators,
+        they help keep ecosystems balanced by influencing the
+        populations of other animals.
+      </p>
+    </div>
+
+    <img class="about-image"
+      src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Red_Wolf_%28Canis_rufus%29.jpg"
+      alt="Red wolf">
+  </div>
+</section>
+
+<section class="facts" id="facts">
+  <div class="section-tag">02 / QUICK DISCOVERY</div>
+  <h2>Red Wolf Facts</h2>
+  <p class="intro">
+    Get to know this remarkable animal through a few important facts.
+  </p>
+
+  <div class="fact-grid">
+    <div class="fact">
+      <h3>Scientific Name</h3>
+      <p>Canis rufus</p>
+    </div>
+    <div class="fact">
+      <h3>Native Region</h3>
+      <p>Southeastern United States</p>
+    </div>
+    <div class="fact">
+      <h3>Diet</h3>
+      <p>Small mammals, deer, and other prey.</p>
+    </div>
+    <div class="fact">
+      <h3>Habitat</h3>
+      <p>Forests, wetlands, and coastal habitats.</p>
+    </div>
+  </div>
+</section>
+
+<section id="threats">
+  <div class="section-tag">03 / THE CHALLENGE</div>
+  <h2>Why Are Red Wolves Endangered?</h2>
+  <p class="intro">
+    Several challenges have caused red wolf populations to decline.
+  </p>
+
+  <div class="threat-grid">
+    <div class="threat">
+      <span>🌳</span>
+      <h3>Habitat Loss</h3>
+      <p>
+        Development and changes to natural landscapes can reduce
+        the places where red wolves live and hunt.
+      </p>
+    </div>
+
+    <div class="threat">
+      <span>🚗</span>
+      <h3>Vehicle Collisions</h3>
+      <p>
+        Roads can put red wolves at risk and divide their
+        natural habitat.
+      </p>
+    </div>
+
+    <div class="threat">
+      <span>🐺</span>
+      <h3>Small Population</h3>
+      <p>
+        A small population makes it harder to maintain
+        genetic diversity and recover.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="timeline">
+  <div class="section-tag">04 / THE JOURNEY</div>
+  <h2>A History of Survival</h2>
+  <p class="intro">
+    The red wolf's story includes decline, protection,
+    and ongoing recovery efforts.
+  </p>
+
+  <div class="timeline-item">
+    <h3>Before the 1900s</h3>
+    <p>
+      Red wolves lived across a large part of the southeastern
+      United States.
+    </p>
+  </div>
+
+  <div class="timeline-item">
+    <h3>20th Century</h3>
+    <p>
+      Habitat changes and human activities caused their
+      population to decline dramatically.
+    </p>
+  </div>
+
+  <div class="timeline-item">
+    <h3>1970s</h3>
+    <p>
+      A recovery program began, including efforts to protect
+      the remaining red wolves.
+    </p>
+  </div>
+
+  <div class="timeline-item">
+    <h3>Today</h3>
+    <p>
+      Conservation organizations and wildlife experts continue
+      working to protect and recover this species.
+    </p>
+  </div>
+</section>
+
+<section class="conservation" id="conservation">
+  <div class="section-tag">05 / THE SOLUTION</div>
+  <h2>Protecting Their Future</h2>
+  <p class="intro">
+    Conservation work gives red wolves a chance to survive
+    and recover in the wild.
+  </p>
+
+  <div class="conservation-box">
+    <h3>What conservation efforts do</h3>
+    <br>
+    <p>• Protect important wildlife habitats.</p>
+    <p>• Monitor red wolf populations.</p>
+    <p>• Support responsible wildlife research.</p>
+    <p>• Educate communities about red wolves.</p>
+    <p>• Work with landowners and local communities.</p>
+  </div>
+</section>
+
+<section class="quiz">
+  <div class="section-tag">06 / TEST YOUR KNOWLEDGE</div>
+  <h2>Red Wolf Challenge</h2>
+  <p>Let's see what you learned!</p>
+
+  <div class="quiz-box">
+    <h3 id="question">Where is the red wolf native to?</h3>
+    <div id="answers"></div>
+    <p id="quiz-result"></p>
+    <p id="quiz-score"></p>
+  </div>
+</section>
+
+<section class="donate" id="donate">
+  <div class="donate-box">
+    <div class="section-tag">07 / MAKE A DIFFERENCE</div>
+    <h2>Help Protect the Red Wolf</h2>
+    <p>
+      Conservation organizations work to protect red wolves
+      and their habitats. Learn how you can support their work.
+    </p>
+    <a class="btn"
+       href="https://redwolves.com/newsite/make-a-donation/"
+       target="_blank" rel="noopener">
+       SUPPORT RED WOLF CONSERVATION
+    </a>
+    <p style="margin-top:18px;font-size:12px;">
+      This link takes you to an independent conservation organization.
+    </p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>FROSTLINE. — WILDLIFE DESERVES A FUTURE.</p>
+  <p>Educational conservation website about the American red wolf.</p>
+  <p>
+    Research:
+    <a href="https://www.fws.gov/species/red-wolf-canis-rufus"
+       target="_blank" rel="noopener">
+       U.S. Fish & Wildlife Service
+    </a>
+  </p>
+  <p style="margin-top:12px;">© 2026 FROSTLINE</p>
+</footer>
+
+<script>
+const questions = [
+  {
+    q: "Where is the red wolf native to?",
+    a: ["Southeastern United States", "Australia", "Africa"],
+    correct: 0
+  },
+  {
+    q: "What is the scientific name of the red wolf?",
+    a: ["Canis lupus", "Canis rufus", "Vulpes vulpes"],
+    correct: 1
+  },
+  {
+    q: "Which is a major threat to red wolves?",
+    a: ["Habitat loss", "Too much snow", "Ocean pollution"],
+    correct: 0
+  },
+  {
+    q: "What do red wolves eat?",
+    a: ["Only plants", "Small mammals and deer", "Only fish"],
+    correct: 1
+  },
+  {
+    q: "Why are conservation programs important?",
+    a: ["To protect wildlife", "To remove forests", "To stop research"],
+    correct: 0
+  }
+];
+
+let current = 0;
+let score = 0;
+
+function showQuestion() {
+  const q = questions[current];
+  document.getElementById("question").textContent =
+    "Question " + (current + 1) + ": " + q.q;
+
+  document.getElementById("quiz-result").textContent = "";
+
+  const answers = document.getElementById("answers");
+  answers.innerHTML = "";
+
+  q.a.forEach((answer, index) => {
+    const button = document.createElement("button");
+    button.textContent = answer;
+
+    button.onclick = () => {
+      if (index === q.correct) {
+        score++;
+        document.getElementById("quiz-result").textContent =
+          "Correct! Great job!";
+      } else {
+        document.getElementById("quiz-result").textContent =
+          "Not quite! The correct answer is " + q.a[q.correct] + ".";
+      }
+
+      answers.innerHTML = "";
+
+      const next = document.createElement("button");
+      next.textContent =
+        current === questions.length - 1 ? "See Final Score" : "Next Question";
+
+      next.onclick = () => {
+        current++;
+
+        if (current < questions.length) {
+          showQuestion();
+        } else {
+          document.getElementById("question").textContent =
+            "Challenge Complete!";
+          document.getElementById("answers").innerHTML = "";
+          document.getElementById("quiz-result").textContent =
+            "You scored " + score + " out of " + questions.length + "!";
+          document.getElementById("quiz-score").textContent =
+            "Thanks for learning about the red wolf!";
+        }
+      };
+
+      answers.appendChild(next);
+    };
+
+    answers.appendChild(button);
+  });
+
+  document.getElementById("quiz-score").textContent =
+    "Score: " + score + " / " + questions.length;
+}
+
+showQuestion();
+</script>
+
+</body>
+</html>
